@@ -1,0 +1,30 @@
+{% extends "base.html"%}
+{%block title%}
+MadLibs Challenge
+{%endblock%}
+{%block content %}
+<h1>Welcome to MadLibs!</h1>
+<p id="form_instructions">Please fill in the prompts below with your chosen words, then select
+    the
+    length of the story you
+    would like to create. Press the submit button when you are done.</p>
+<form action="/story" method="POST">
+    {% for prompt in prompts %}
+    <div>
+        <label for="{{prompt}}">{{prompt}}:</label>
+        <input type="text" id="{{prompt}}" name="{{prompt}}" required>
+    </div>
+    {% endfor %}
+    <div>
+        <label for="story_text">Choose a story:</label>
+        <select name="story_text" id="story_text">
+            <option value="short">Short Story</option>
+            <option value="medium">Medium Story</option>
+            <option value="long">Long Story</option>
+        </select>
+        <input type="submit">
+    </div>
+</form>
+
+
+{%endblock%}
